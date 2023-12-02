@@ -5,9 +5,9 @@ def menu():
     print("2. Déposer de l'argent")
     print("3. Retirer de l'argent")
     print("4. Consulter le solde")
-    print("5. demande de prêt")
+    print("5. Demande de prêt")
     print("6. Quitter")
-    choix = input("Veuillez choisir une option (1-5) : ")
+    choix = input("Veuillez choisir une option (1-6) : ")
     return choix
 
 def main():
@@ -25,21 +25,34 @@ def main():
         elif choix == "2":
             nom = input("Entrez le nom du titulaire du compte : ")
             montant = float(input("Entrez le montant à déposer : "))
-            comptes[nom].deposer(montant)
+            if nom in comptes:
+                comptes[nom].deposer(montant)
+            else:
+                print(f"Compte pour {nom} non trouvé.")
 
         elif choix == "3":
             nom = input("Entrez le nom du titulaire du compte : ")
             montant = float(input("Entrez le montant à retirer : "))
-            comptes[nom].retirer(montant)
+            if nom in comptes:
+                comptes[nom].retirer(montant)
+            else:
+                print(f"Compte pour {nom} non trouvé.")
 
         elif choix == "4":
             nom = input("Entrez le nom du titulaire du compte : ")
-            comptes[nom].consulter_solde()
+            if nom in comptes:
+                comptes[nom].consulter_solde()
+            else:
+                print(f"Compte pour {nom} non trouvé.")
 
         elif choix == "5":
-            montant_pret = input("Taper votre montant de prêt : ")
-            break
-        
+            nom = input("Entrez le nom du titulaire du compte : ")
+            montant_pret = float(input("Entrez le montant du prêt : "))
+            if nom in comptes:
+                comptes[nom].demande_pret(montant_pret)
+            else:
+                print(f"Compte pour {nom} non trouvé.")
+
         elif choix == "6":
             print("Merci d'avoir utilisé notre application. Au revoir!")
             break

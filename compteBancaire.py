@@ -3,6 +3,7 @@ class CompteBancaire:
         self.nom = nom
         self.solde = solde
         self.taux_interet = taux_interet
+        self.montant_pret = 0
 
     def deposer(self, montant):
         self.solde += montant
@@ -19,20 +20,13 @@ class CompteBancaire:
         print(f"Solde du compte {self.nom} : {self.solde} ariary")
 
     def demande_pret(self,montant_pret):
-        self.montant_pret = self.montant_pret * self.taux_interet
+        self.montant_pret = montant_pret * self.taux_interet
+        print(f"Total de votre prét est: {self.montant_pret} ariary")
 
 
 
 
 
-def menu():
-    print("1. Créer un compte")
-    print("2. Déposer de l'argent")
-    print("3. Retirer de l'argent")
-    print("4. Consulter le solde")
-    print("5. Quitter")
-    choix = input("Veuillez choisir une option (1-5) : ")
-    return choix
 
 
 
